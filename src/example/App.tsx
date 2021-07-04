@@ -4,9 +4,10 @@ import {
 	StyledElement,
 	withProps,
 	createHistoryPlugin,
+	createTablePlugin,
 } from "@udecode/slate-plugins"
 
-import { createTablePlugin, TableElement, TdElement } from "../table"
+import { TableElement, TdElement } from "../table"
 
 import {
 	ELEMENT_TABLE,
