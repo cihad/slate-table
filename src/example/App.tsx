@@ -116,7 +116,10 @@ export const App = () => {
 					setDebugValue(newValue)
 				}}
 			/>
-			<pre>{JSON.stringify(debugValue, null, 2)}</pre>
+			<details style={{ marginTop: 20 }}>
+				<summary>Node</summary>
+				<pre>{JSON.stringify(debugValue, null, 2)}</pre>
+			</details>
 		</>
 	)
 }
