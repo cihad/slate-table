@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { Node, Transforms } from "slate"
 import { useSlate, useSelected, ReactEditor } from "slate-react"
-import { TableContext, TableContextInterface } from "./TableContext"
+import { TableContext, TableContextInterface } from "../TableContext"
 import {
 	ClassName,
 	RootStyleSet,
@@ -32,10 +32,12 @@ export const TableElementBase = ({
 	const [highlightColumn, setHighlightColumn] = useState<number | null>(null)
 	const [selectedRow, setSelectedRow] = useState<number[] | null>(null)
 	const [selectedColumn, setSelectedColumn] = useState<number | null>(null)
-	const [highlightRemoveRow, setHighlightRemoveRow] =
-		useState<number[] | null>(null)
-	const [highlightRemoveColumn, setHighlightRemoveColumn] =
-		useState<number | null>(null)
+	const [highlightRemoveRow, setHighlightRemoveRow] = useState<
+		number[] | null
+	>(null)
+	const [highlightRemoveColumn, setHighlightRemoveColumn] = useState<
+		number | null
+	>(null)
 	const [hlResizeColumn, setHlResizeColumn] = useState<number | null>(null)
 	const [resizingColumn, setResizingColumn] = useState<number | null>(null)
 	const [columnWidths, setColumnWidths] = useState(element.columnWidths || [])

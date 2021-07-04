@@ -202,12 +202,28 @@ export const getTdElementStyles = ({
 				transform: "translate(8px, -30px)",
 			},
 		],
+		addFirstColumn: [
+			add,
+			{
+				left: 0,
+				top: 0,
+				transform: "translate(-8px, -30px)",
+			},
+		],
 		addRow: [
 			add,
 			{
 				left: 0,
 				bottom: 0,
 				transform: "translate(-30px, 8px)",
+			},
+		],
+		addFirstRow: [
+			add,
+			{
+				left: 0,
+				top: 0,
+				transform: "translate(-30px, -8px)",
 			},
 		],
 		resizeHandler: [

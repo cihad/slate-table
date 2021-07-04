@@ -12,7 +12,6 @@ import { TableElement, TdElement } from "../table"
 import {
 	ELEMENT_TABLE,
 	ELEMENT_TR,
-	ELEMENT_TH,
 	ELEMENT_TD,
 } from "@udecode/slate-plugins-table"
 
@@ -96,7 +95,6 @@ const components = {
 	[ELEMENT_TABLE]: TableElement,
 	[ELEMENT_TR]: withProps(StyledElement, { as: "tr" }),
 	[ELEMENT_TD]: TdElement,
-	[ELEMENT_TH]: withProps(StyledElement, { as: "th" }),
 }
 
 export const App = () => {

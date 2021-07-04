@@ -13,7 +13,9 @@ export interface TdElementStyleSet extends RootStyleSet {
 	columnControl?: any
 	rowControl?: any
 	addColumn?: any
+	addFirstColumn?: any
 	addRow?: any
+	addFirstRow?: any
 	selectRow?: any
 	selectColumn?: any
 	resizeHandler?: any

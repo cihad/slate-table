@@ -11,11 +11,15 @@ To install:
 The usage:
 
 ```jsx
-import { ELEMENT_TABLE, ELEMENT_TD } from "@udecode/slate-plugins"
+import {
+	createTablePlugin,
+	ELEMENT_TABLE,
+	ELEMENT_TD,
+} from "@udecode/slate-plugins"
 import { TableElement, TdElement } from "@cihad/slate-table"
 
 let components = createSlatePluginsComponents({
-	[ELEMENT_TABlE]: TableElement,
+	[ELEMENT_TABLE]: TableElement,
 	[TD_ELEMENT]: TdElement,
 })
 
@@ -46,6 +50,7 @@ const initialValue = [
 const plugins = [
 	createReactPlugin(),
 	createHistoryPlugin(),
+	createTablePlugin(),
 	...createBasicElementPlugins(),
 	...createBasicMarkPlugins(),
 ]

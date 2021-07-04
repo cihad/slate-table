@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from "react"
 import { Editor, Node, Path, Transforms } from "slate"
 import { ReactEditor, useSlate } from "slate-react"
-import { TableContextInterface, useTable } from "./TableContext"
+import { TableContextInterface, useTable } from "../TableContext"
 import { getBlockAbove } from "@udecode/slate-plugins"
 import { TableElementType, TrElementType } from "../types"
 import {
@@ -14,9 +14,10 @@ import { styled } from "@uifabric/utilities"
 import { getTdElementStyles } from "./TdElement.styles"
 import { TdElementStyleProps, TdElementStyleSet } from "./TdElement.types"
 
-const MIN_WIDTH = 50
-const getClassNames =
-	getRootClassNames<TdElementStyleProps, TdElementStyleSet>()
+const getClassNames = getRootClassNames<
+	TdElementStyleProps,
+	TdElementStyleSet
+>()
 
 export const TdElementBase = ({
 	attributes,
@@ -125,25 +126,6 @@ export const TdElementBase = ({
 			mouseUpEventHandler,
 		]
 	)
-
-	// const classNames = {
-	// 	"select-column":
-	// 		columnIdx === highlightColumn || columnIdx === selectedColumn,
-	// 	"select-row":
-	// 		(highlightRow && Path.equals(trPath, highlightRow)) ||
-	// 		(selectedRow && Path.equals(trPath, selectedRow)),
-	// 	"remove-column": columnIdx === highlightRemoveColumn,
-	// 	"remove-row":
-	// 		highlightRemoveRow && Path.equals(trPath, highlightRemoveRow),
-	// }
-
-	// const serializeClassNames = (classNames: {
-	// 	[index: string]: boolean
-	// }): string =>
-	// 	Object.entries(classNames)
-	// 		.filter(([_, val]) => !!val)
-	// 		.map(([klass]) => klass)
-	// 		.join(" ")
 
 	const classNames = getClassNames(styles, {
 		className,
@@ -305,6 +287,65 @@ export const TdElementBase = ({
 								Path.next(trPath)
 							)
 							Transforms.select(editor, startPoint)
+						}}
+					></div>
+				</>
+			)}
+			{tableSelected && isFirstColumn && isFirstRow && (
+				<>
+					<div
+						contentEditable={false}
+						className={classNames.addFirstRow}
+						onClick={() => {
+							const children = Array(
+								Array.from(Node.children(tr, [])).length
+							)
+								.fill(null)
+								.map(() => ({
+									type: "td",
+									children: [{ text: "" }],
+								}))
+
+							Transforms.insertNodes(
+								editor,
+								{
+									type: "tr",
+									children,
+								} as Node,
+								{
+									at: trPath,
+								}
+							)
+
+							const startPoint = Editor.start(editor, trPath)
+							Transforms.select(editor, startPoint)
+						}}
+					></div>
+					<div
+						contentEditable={false}
+						className={classNames.addFirstColumn}
+						onClick={() => {
+							for (const [, childTRPath] of Node.children(
+								editor,
+								tablePath
+							)) {
+								Transforms.insertNodes(
+									editor,
+									{
+										type: "td",
+										children: [{ text: "" }],
+									} as Node,
+									{
+										at: [...childTRPath, 0],
+										select:
+											childTRPath[
+												childTRPath.length - 1
+											] === 0,
+									}
+								)
+							}
+
+							setHighlightRemoveRow(null)
 						}}
 					></div>
 				</>
