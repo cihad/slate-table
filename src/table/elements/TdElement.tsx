@@ -48,6 +48,8 @@ export const TdElementBase = ({
 		resizingColumn,
 		setResizingColumn,
 		setColumnWidth,
+		insertionBar,
+		setInsertionBar,
 	} = useTable() as TableContextInterface
 	const path = ReactEditor.findPath(editor, element)
 	const columnIdx = path[path.length - 1]
@@ -55,6 +57,7 @@ export const TdElementBase = ({
 		at: ReactEditor.findPath(editor as ReactEditor, element),
 		mode: "lowest",
 	}) as [TrElementType, Path]
+	const rowIdx = trPath[trPath.length - 1]
 
 	const [table, tablePath] = getBlockAbove(editor, {
 		at: trPath,
@@ -140,6 +143,8 @@ export const TdElementBase = ({
 		firstRowResizer: isFirstRow,
 		highlightResizer:
 			hlResizeColumn === columnIdx || resizingColumn === columnIdx,
+		showInsertionBar: insertionBar && Path.equals(trPath, insertionBar),
+		firstColumnInsertionBar: isFirstColumn,
 	})
 
 	return (
@@ -192,6 +197,12 @@ export const TdElementBase = ({
 					<div
 						contentEditable={false}
 						className={classNames.addColumn}
+						onMouseOver={() => {
+							setHlResizeColumn(columnIdx)
+						}}
+						onMouseOut={() => {
+							setHlResizeColumn(null)
+						}}
 						onClick={() => {
 							let newPath: Path | number = Path.next(path)
 							newPath = newPath[newPath.length - 1]
@@ -261,6 +272,12 @@ export const TdElementBase = ({
 					<div
 						contentEditable={false}
 						className={classNames.addRow}
+						onMouseOver={() => {
+							setInsertionBar(trPath)
+						}}
+						onMouseOut={() => {
+							setInsertionBar(null)
+						}}
 						onClick={() => {
 							const children = Array(
 								Array.from(Node.children(tr, [])).length
@@ -363,6 +380,15 @@ export const TdElementBase = ({
 					contentEditable={false}
 				></div>
 			)}
+
+			{tableSelected &&
+				insertionBar &&
+				Path.equals(trPath, insertionBar) && (
+					<div
+						className={classNames.insertionBar}
+						contentEditable={false}
+					></div>
+				)}
 		</td>
 	)
 }

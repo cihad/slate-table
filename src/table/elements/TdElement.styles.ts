@@ -10,6 +10,8 @@ export const getTdElementStyles = ({
 	selectRow,
 	firstRowResizer,
 	highlightResizer,
+	showInsertionBar,
+	firstColumnInsertionBar,
 }: any): TdElementStyleSet => {
 	const activeControl = {
 		border: "1px solid var(--selected-cell-border-color)",
@@ -252,6 +254,31 @@ export const getTdElementStyles = ({
 					selectors: {
 						":before": highlightResizerStyle,
 					},
+				},
+			],
+		],
+		insertionBar: [
+			"insertion-bar",
+			{
+				position: "absolute",
+				bottom: -1,
+				right: 0,
+				display: "none",
+				width: "100%",
+				height: 2,
+				background: "var(--selected-cell-border-color)",
+				zIndex: 10,
+			},
+			showInsertionBar && [
+				"show-insertion-bar",
+				{
+					display: "block",
+				},
+			],
+			firstColumnInsertionBar && [
+				"first-column-insertion-bar",
+				{
+					width: "calc(100% + 10px)",
 				},
 			],
 		],

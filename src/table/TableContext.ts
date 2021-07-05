@@ -22,6 +22,8 @@ export interface TableContextInterface {
 	resizingColumn: number
 	setResizingColumn: columnSetter
 	setColumnWidth: (columnIndex: number, width: number) => void
+	insertionBar: number[]
+	setInsertionBar: rowSetter
 }
 
 export const TableContext = createContext<TableContextInterface | null>(null)

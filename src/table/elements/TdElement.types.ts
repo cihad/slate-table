@@ -7,6 +7,8 @@ export interface TdElementStyleProps extends ClassName {
 	removeRow?: boolean
 	firstRowResizer?: boolean
 	highlightResizer?: boolean
+	showInsertionBar?: boolean
+	firstColumnInsertionBar?: boolean
 }
 
 export interface TdElementStyleSet extends RootStyleSet {
@@ -19,4 +21,5 @@ export interface TdElementStyleSet extends RootStyleSet {
 	selectRow?: any
 	selectColumn?: any
 	resizeHandler?: any
+	insertionBar?: any
 }

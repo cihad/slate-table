@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useLayoutEffect, useState } from "react"
 import { Node, Transforms } from "slate"
 import { useSlate, useSelected, ReactEditor } from "slate-react"
 import { TableContext, TableContextInterface } from "../TableContext"
@@ -21,10 +21,7 @@ export const TableElementBase = ({
 	styles,
 	nodeProps,
 }: StyledElementProps) => {
-	const classNames = getClassNames(styles, {
-		className,
-	})
-
+	const classNames = getClassNames(styles, { className })
 	const editor = useSlate()
 	const path = ReactEditor.findPath(editor as ReactEditor, element)
 	const selected = useSelected()
@@ -32,6 +29,7 @@ export const TableElementBase = ({
 	const [highlightColumn, setHighlightColumn] = useState<number | null>(null)
 	const [selectedRow, setSelectedRow] = useState<number[] | null>(null)
 	const [selectedColumn, setSelectedColumn] = useState<number | null>(null)
+	const [insertionBar, setInsertionBar] = useState<number[] | null>(null)
 	const [highlightRemoveRow, setHighlightRemoveRow] = useState<
 		number[] | null
 	>(null)
@@ -57,15 +55,15 @@ export const TableElementBase = ({
 		if (element.columnWidths) return
 		const firstTr = Node.child(element, 0)
 		const columnCount = Array.from(Node.children(firstTr, [])).length
-		Transforms.setNodes(
-			editor,
-			{
-				columnWidths: Array(columnCount).fill(null),
-			} as Partial<Node>,
-			{
-				at: path,
-			}
-		)
+		const colWiths = Array(columnCount).fill(100)
+		setColumnWidths(colWiths)
+		setTimeout(() => {
+			Transforms.setNodes(
+				editor,
+				{ columnWidths: colWiths } as Partial<Node>,
+				{ at: path }
+			)
+		}, 0)
 	}, [])
 
 	useEffect(() => {
@@ -114,6 +112,8 @@ export const TableElementBase = ({
 						resizingColumn,
 						setResizingColumn,
 						setColumnWidth,
+						insertionBar,
+						setInsertionBar,
 					} as TableContextInterface
 				}
 			>
