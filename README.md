@@ -71,4 +71,13 @@ const Editor = () => {
 
 You can try using by [example sandbox](https://codesandbox.io/s/cihadslate-table-example-lzks2)
 
+## TODOS
+
+-   [ ] \<th\> element
+-   [ ] Header row and header column
+-   [ ] Add table toolbar button
+-   [ ] Insertion bar for add first column and add first row
+-   [ ] Custom deserialize function for column widths
+-   [ ] Merge cells
+
 [screenshot]: https://raw.githubusercontent.com/cihad/slate-table/main/screenshot.png "@cihad/slate-table screenshot"
