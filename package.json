@@ -1,63 +1,65 @@
 {
-  "name": "@cihad/slate-table",
-  "version": "0.2.0-alpha.1",
-  "public": true,
-  "main": "./dist/index.js",
-  "files": [
-    "dist/*"
-  ],
-  "dependencies": {
-    "@rollup/plugin-typescript": "^8.2.1",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@udecode/slate-plugins": "^1.0.0-alpha.25",
-    "@udecode/slate-plugins-table": "^1.0.0-alpha.25",
-    "@uifabric/utilities": "^7.33.5",
-    "gh-pages": "^3.1.0",
-    "react": "^16.14",
-    "react-dom": "^16.14",
-    "react-popper": "^2.2.5",
-    "react-scripts": "4.0.3",
-    "rollup": "^2.44.0",
-    "slate": "^0.61.0",
-    "slate-history": "^0.61.0",
-    "slate-hyperscript": "^0.61.0",
-    "slate-react": "^0.61.0",
-    "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:tsc": "rm -rf build && tsc --build \"./tsconfig.build.json\"",
-    "build:rollup": "rm -rf lib && rollup -c",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {}
+	"name": "@cihad/slate-table",
+	"version": "0.2.0-alpha.1",
+	"public": true,
+	"homepage": "https://cihad.github.io/slate-table",
+	"repository": "github:cihad/slate-table",
+	"main": "./dist/index.js",
+	"files": [
+		"dist/*"
+	],
+	"dependencies": {
+		"@rollup/plugin-typescript": "^8.2.1",
+		"@testing-library/jest-dom": "^5.11.4",
+		"@testing-library/react": "^11.1.0",
+		"@testing-library/user-event": "^12.1.10",
+		"@types/jest": "^26.0.15",
+		"@types/node": "^12.0.0",
+		"@types/react": "^17.0.0",
+		"@types/react-dom": "^17.0.0",
+		"@udecode/slate-plugins": "^1.0.0-alpha.25",
+		"@udecode/slate-plugins-table": "^1.0.0-alpha.25",
+		"@uifabric/utilities": "^7.33.5",
+		"gh-pages": "^3.1.0",
+		"react": "^16.14",
+		"react-dom": "^16.14",
+		"react-popper": "^2.2.5",
+		"react-scripts": "4.0.3",
+		"rollup": "^2.44.0",
+		"slate": "^0.61.0",
+		"slate-history": "^0.61.0",
+		"slate-hyperscript": "^0.61.0",
+		"slate-react": "^0.61.0",
+		"typescript": "^4.1.2",
+		"web-vitals": "^1.0.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"build:tsc": "rm -rf build && tsc --build \"./tsconfig.build.json\"",
+		"build:rollup": "rm -rf lib && rollup -c",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {}
 }
